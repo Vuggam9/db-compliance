@@ -1,10 +1,8 @@
 -- azure/04_always_encrypted_setup.sql
--- Guidance and T-SQL artifacts for Always Encrypted. This file does not embed
-Key Vault credentials.
+-- Guidance and T-SQL artifacts for Always Encrypted. This file does not embedKey Vault credentials.
 -- Steps (summarized):
 -- 1. Provision an Azure Key Vault and a Key (RSA 2048+). Note its URI.
--- 2. Grant the client/service principal "get" and "unwrapKey" permissions on
-the Key Vault key.
+-- 2. Grant the client/service principal "get" and "unwrapKey" permissions onthe Key Vault key.
 -- 3. Register a Column Master Key (CMK) in the database referring to Key Vault.
 -- 4. Create Column Encryption Key (CEK) protected by the CMK.
 -- 5. Create/alter tables with ENCRYPTED WITH column options.

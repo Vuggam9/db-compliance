@@ -1,4 +1,4 @@
-# DB Compliance Repo
+# DB Compliance
 Full repository of production-ready SQL and helper scripts for:
 - Azure SQL (T-SQL): schemas, RBAC, Always Encrypted setup (Key Vault reference), auditing.
 - MySQL: schemas, roles, view-based masking, application-side encryptionhelpers.

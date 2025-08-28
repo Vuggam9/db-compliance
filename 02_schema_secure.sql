@@ -1,1 +1,25 @@
--- Placeholder mysql schema secure
+-- mysql/02_schema_secure.sql
+CREATE DATABASE IF NOT EXISTS app_secure CHARACTER SET utf8mb4 COLLATE
+utf8mb4_unicode_ci;
+USE app_secure;
+CREATE TABLE IF NOT EXISTS identities (
+user_id BIGINT PRIMARY KEY,
+email VARCHAR(256) NULL,
+phone VARCHAR(32) NULL,
+ssn CHAR(11) NULL,
+dob DATE NULL,
+encrypted_blob VARBINARY(4096) NULL,
+created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+CONSTRAINT fk_id_user FOREIGN KEY (user_id) REFERENCES
+app_core.users(user_id) ON DELETE CASCADE
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS audit_events (
+audit_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+user_id BIGINT NULL,
+event_ts TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+actor VARCHAR(256) NOT NULL,
+action VARCHAR(64) NOT NULL,
+object_type VARCHAR(64) NULL,
+object_id VARCHAR(128) NULL,
+details JSON NULL
+) ENGINE=InnoDB;

@@ -1,1 +1,19 @@
--- Placeholder mysql schema core
+-- mysql/01_schema_core.sql
+CREATE DATABASE IF NOT EXISTS app_core CHARACTER SET utf8mb4 COLLATE
+utf8mb4_unicode_ci;
+USE app_core;
+CREATE TABLE IF NOT EXISTS users (
+user_id BIGINT AUTO_INCREMENT PRIMARY KEY,
+username VARCHAR(100) NOT NULL UNIQUE,
+tenant_id CHAR(36) NOT NULL,
+created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS sessions (
+session_id CHAR(36) PRIMARY KEY,
+user_id BIGINT NOT NULL,
+started_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+last_seen TIMESTAMP NULL,
+device_info VARCHAR(512) NULL,
+CONSTRAINT fk_sessions_user FOREIGN KEY (user_id) REFERENCES users(user_id)
+ON DELETE CASCADE
+) ENGINE=InnoDB;

@@ -2,7 +2,6 @@
 Full repository of production-ready SQL and helper scripts for:
 - Azure SQL (T-SQL): schemas, RBAC, Always Encrypted setup (Key Vault reference), auditing.
 - MySQL: schemas, roles, view-based masking, application-side encryptionhelpers.
-**Important:** These are complete files. Replace placeholders and run in acontrolled environment first. Back up existing databases.
 Steps:
 1. Review `azure/` or `mysql/` for your target platform.
 2. Provision Azure Key Vault and grant access to the managed identity/service principal before running Azure scripts.

@@ -1,0 +1,1 @@
+-- Placeholder mysql schema core

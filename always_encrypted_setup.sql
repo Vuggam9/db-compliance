@@ -1,0 +1,1 @@
+-- Placeholder azure always encrypted
